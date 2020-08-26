@@ -1,0 +1,4 @@
+snowflake-connector-python==2.2.10
+boto3==1.14.42
+botocore==1.17.42
+pandas==1.1.0
