@@ -59,11 +59,6 @@ def write_to_sf(df, schema, table, database, warehouse, s3_bucket):
 
         cursor = snowflake_connection.cursor()
 
-
-        column_list = df.columns.values.tolist()
-        column_list_copy = ", ".join(str(x) for x in column_list)
-        number_list_copy = ", ".join(('$' + str((i+1))) for i in range(len(df.columns)))
-
         cursor.execute(f"""copy into {schema}.{table}
                             from s3://{s3_bucket}/{schema}.{table}.csv.gz credentials=(aws_key_id='{sec.aws_key_id}' aws_secret_key='{sec.aws_secret_key}')
                                 
